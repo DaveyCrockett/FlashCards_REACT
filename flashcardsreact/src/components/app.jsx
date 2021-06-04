@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GetCollection from './GetCollection';
+import axios from 'axios';
 
 class App extends Component {
     constructor(props){
@@ -9,9 +10,10 @@ class App extends Component {
         }
     }
 
-    async get_collection(collection_id) {
+    async get_collection() {
         try{
-            let response = await axios.get(`http://127.0.0.1:8000/flashcardsapp/${collection_id}`);
+            let response = await axios.get(`http://127.0.0.1:8000/flashcardsapp/${this.state.flashcards}`);
+            console.log(response.data)
             this.setState({
                 flashcards: response.data
             });
@@ -23,7 +25,7 @@ class App extends Component {
 
     async get_flashcard(collection_id, flash_card_id) {
         try{
-            let response = await axios.get(`http://127.0.0.1:8000/flashcardsapp/${collection_id}/${flash_card_id}`)
+            let response = await axios.get(`http://127.0.0.1:8000/flashcardsapp/${collection_id}/${flash_card_id}`);
             this.setState({
                 flashcards: response.data
             });
@@ -34,16 +36,7 @@ class App extends Component {
 
     async post_flashcard() {
         const flashCards = {flashcards: this.state.flashcards};
-        await axios.post(`http://127.0.0.1:8000/flashcardsapp/${}`, { flashCards })
-        .then(response => this.setState({
-            flashcards: [...this.state.flashcards, response.data]
-        }))
-        
-    }
-
-    async post_flashcard(collection_id, flash_card_id) {
-        const flashCards = {flashcards: this.state.flashcards};
-        await axios.put(`http://127.0.0.1:8000/flashcardsapp/${collection_id}/${flash_card_id}`, { flashCards })
+        await axios.post(`http://127.0.0.1:8000/flashcardsapp/${this.state.flashcards}`, { flashCards })
         .then(response => this.setState({
             flashcards: [...this.state.flashcards, response.data]
         }))
@@ -55,7 +48,7 @@ class App extends Component {
             <div>
                 <table>
                     <tbody>
-                        <GetCollection />
+                        <GetCollection get_all={this.get_collection.bind(this)} />
                     </tbody>
                 </table>
             </div>
