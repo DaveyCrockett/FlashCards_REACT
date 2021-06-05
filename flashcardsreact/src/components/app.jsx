@@ -12,8 +12,7 @@ class App extends Component {
 
     async get_collection() {
         try{
-            let response = await axios.get(`http://127.0.0.1:8000/flashcardsapp/${this.state.flashcards}`);
-            console.log(response.data)
+            let response = await axios.get(`http://127.0.0.1:8000/flashcardsapp/`);
             this.setState({
                 flashcards: response.data
             });
@@ -43,12 +42,18 @@ class App extends Component {
         
     }
 
+    componentDidMount(){
+        this.get_collection()
+    }
+
     render() {
         return (
             <div>
                 <table>
                     <tbody>
-                        <GetCollection get_all={this.get_collection.bind(this)} />
+                    {this.state.flashcards.map((index) => {
+                        return (<GetCollection key={index.id} flash_card={index} />);
+                    })}
                     </tbody>
                 </table>
             </div>

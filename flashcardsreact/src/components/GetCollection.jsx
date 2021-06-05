@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import CollectionLink from './CollectionLink'
+import  { Component } from 'react';
 
 class GetCollection extends Component {
     constructor(props) {
@@ -7,23 +6,15 @@ class GetCollection extends Component {
         this.state = {
             flashcards: [],
         }
-     }
-
-    flashCardMapTable() {
-        const current_cards = this.props.get_all()
-        current_cards.map((index) => {
-            return (
-              <tr key={index}>
-                <td><CollectionLink get_all={current_cards} /></td>
-              </tr>
-            );
-          })
-    } 
-
+     } 
+    
+    
     render() { 
         return (
-            this.flashCardMapTable()
-         );
+                <tr>
+                    <td><a href={`http://127.0.0.1:8000/flashcardsapp/${this.props.flash_card.collection_id}`}>Collection {this.props.flash_card.collection_id}</a></td>
+                </tr>
+        );
     }
 }
  
