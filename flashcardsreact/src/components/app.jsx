@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import GetCollection from './GetCollection';
 import axios from 'axios';
+import DisplayFlashCard from './DisplayFlashCard'
+import DisplayCollection from './DiplayCollection';
+
 
 class App extends Component {
     constructor(props){
@@ -10,28 +12,17 @@ class App extends Component {
         }
     }
 
-    async get_collection() {
+    /*
+    async get_flashcard() {
         try{
-            let response = await axios.get(`http://127.0.0.1:8000/flashcardsapp/`);
-            this.setState({
-                flashcards: response.data
-            });
-        } catch (er){
-            console.log('ERROR in get_collection', er)
-        }
-
-    }
-
-    async get_flashcard(collection_id, flash_card_id) {
-        try{
-            let response = await axios.get(`http://127.0.0.1:8000/flashcardsapp/${collection_id}/${flash_card_id}`);
+            let response = await axios.get(`http://127.0.0.1:8000/flashcardsapp/${this.props.collection_id}/${this.props.flash_card_id}`);
             this.setState({
                 flashcards: response.data
             });
         } catch (er){
             console.log('ERROR in get_flashcard', er)
         }
-    }
+    }    
 
     async post_flashcard() {
         const flashCards = {flashcards: this.state.flashcards};
@@ -40,22 +31,32 @@ class App extends Component {
             flashcards: [...this.state.flashcards, response.data]
         }))
         
+    }*/
+
+    async get_all_flash_cards(){
+        try{
+            let response = await axios.get(`http://127.0.0.1:8000/flashcardsapp/`);
+            this.setState({
+                flashcards: response.data
+            });
+        } catch (er){
+            console.log('ERROR in get_collection', er)
+        }
     }
+
+    
 
     componentDidMount(){
-        this.get_collection()
+        this.get_all_flash_cards();
+      
     }
 
+    
     render() {
         return (
             <div>
-                <table>
-                    <tbody>
-                    {this.state.flashcards.map((index) => {
-                        return (<GetCollection key={index.id} flash_card={index} />);
-                    })}
-                    </tbody>
-                </table>
+                <DisplayFlashCard cards={this.state.flashcards} />
+                <DisplayCollection />
             </div>
         );
     };
