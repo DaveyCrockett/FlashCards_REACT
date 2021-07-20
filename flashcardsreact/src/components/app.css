@@ -75,3 +75,11 @@
   .submitBtn {
       margin-left: 20px;
   }
+
+  .terms {
+      margin-top: 20px;
+      border-radius: 15%;
+      background-color: darkcyan;
+      color: white;
+      font-size: 18pt;
+  }

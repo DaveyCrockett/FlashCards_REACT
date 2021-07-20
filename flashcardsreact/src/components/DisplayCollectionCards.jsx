@@ -18,7 +18,7 @@ class DisplayCollectionCards extends Component {
        
     collectionCards() {
       return this.props.collection.map((card, index) =>
-         <li className='termList' key={index}><button onClick={() => this.handlePopUpToggle(card, index)}>{card.term}</button> </li>
+         <li className='termList' key={index}><button  className='terms' onClick={() => this.handlePopUpToggle(card, index)}>{card.term}</button> </li>
         )
     }
     
