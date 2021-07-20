@@ -50,13 +50,13 @@ class DisplayFlashCard extends Component {
             
             <div className="row row-spacer">
                 <div className="col">
-                    <button onClick={() => this.goToPreviousCard()}>Previos Card</button>
+                    <i className='arrow left'  onClick={() => this.goToPreviousCard()}></i>
                 </div>
                 <div className="col">
-                    <div className="col md-4"><p id='termDefinition'><strong>{this.props.cards[this.state.cardNumber].term}: </strong>{this.props.cards[this.state.cardNumber].definition}</p><button type='button'onClick={() => this.remove_card()}>DELETE</button></div>
+                    <div className="col md-4"><p id='termDefinition'><strong>{this.props.cards[this.state.cardNumber].term}: </strong>{this.props.cards[this.state.cardNumber].definition}</p><button type='button' className='deleteBtn' onClick={() => this.remove_card()}><i class="fa fa-trash-o"></i><span className='deleteTxt'>DELETE</span></button></div>
                 </div>
                 <div className="col">
-                    <button onClick={() => this.goToNextCard()}>Next Card</button>
+                    <i className='arrow right' onClick={() => this.goToNextCard()}></i>
                 </div>
             </div>
            

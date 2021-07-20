@@ -1,3 +1,77 @@
 #termDefinition {
     font-size: 24pt;
 }
+
+.cardSelect:hover {
+    background-color: black;
+    color: white;    
+}
+
+#title {
+    text-align: center;
+}
+
+.subTitle {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.termList {
+    list-style-type: none;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 20px;
+  }
+  
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  .left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  
+  .subHeading {
+      margin-bottom: 50px;
+  }
+
+  .labelSpace {
+      margin-right: 20px;
+      margin-left: 20px;
+  }
+
+  .formDimension {
+      width: 100%;
+  }
+
+  .deleteBtn {
+      margin-top: 50px;
+      font-size: 18pt;
+      border-radius: 10%;
+      background-color: red;
+  }
+
+  .deleteTxt{
+      margin-left: 10px;
+  }
+
+  .submitBtn {
+      margin-left: 20px;
+  }

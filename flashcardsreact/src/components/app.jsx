@@ -3,6 +3,8 @@ import axios from 'axios';
 import DisplayFlashCard from './DisplayFlashCard'
 import CreateFlashCard from './CreateFlashCard';
 import UpdateFlashCard from './UpdateFlashCard'
+import DisplayCollection from './DisplayCollection';
+import './app.css'
 
 
 class App extends Component {
@@ -15,6 +17,8 @@ class App extends Component {
            collection: []
         }
         this.get_collection = this.get_collection.bind(this)
+        this.onCollection = this.onCollection.bind(this)
+        this.offCollection = this.offCollection.bind(this)
     }
 
     async get_all_flash_cards(){
@@ -93,24 +97,24 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1>All Flash Cards</h1>
-                {this.state.flashcards.length > 0 && <DisplayFlashCard cards={this.state.flashcards} />}
-                <h1>Collection Titles</h1>
-                {this.state.flashcards.length > 0 && <div>
-                    <div className="row row-spacer">
-                        <div className="col">
-                            <input type="button" id="onCollection" name="onCollection" value="Up One" onClick={() => this.onCollection(true)}></input>
-                        </div>
-                        <div className="col">
-                            <h1>{this.state.collection.length > 0 && this.state.collection[0].collection_title}</h1>
-                        </div>
-                        <div className='col'>
-                            <input type="button" id="offCollection" name="offCollection" value="Down One" onClick={() => this.offCollection(true)} ></input>
-                        </div>
-                    </div>
-                </div>}
-                <CreateFlashCard />
-                <UpdateFlashCard cards={this.state.flashcards}/>
+                <h1 id='title'>My Flash Cards</h1>
+                <div className='subTitle'>
+                    <h2 className='subHeading'>All Flash Cards</h2>
+                    {this.state.flashcards.length > 0 && <DisplayFlashCard cards={this.state.flashcards} />}
+                </div>
+                <hr />
+                <div className='subTitle'>
+                    <h2 className='subHeading'>Collection Titles</h2>
+                    {this.state.flashcards.length > 0 && <DisplayCollection collection={this.state.collection} onCollection={this.onCollection} offCollection={this.offCollection} />}
+                </div>
+                <hr />
+                <div className='subTitle'>
+                    <CreateFlashCard />
+                </div>
+                <hr />
+                <div className='subTitle'>
+                    <UpdateFlashCard cards={this.state.flashcards}/>
+                </div>
             </div>
         );
     };
